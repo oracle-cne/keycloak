@@ -16,7 +16,7 @@
 %global oracle_release_version  1
 %global _buildhost              build-ol%{?oraclelinux}-%{?_arch}.oracle.com
 %global maven_artifacts_version 1.0
-%global maven_version           3.8.4
+%global maven_version           3.9.9
 
 Name:           %{app_name}
 Version:        %{app_version}
@@ -27,7 +27,7 @@ Group:          System/Management
 Url:            https://github.com/keycloak/keycloak
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  maven-artifacts = %{maven_artifacts_version}
-BuildRequires:  maven = %{maven_version}
+BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
 #Patch0:        build.keycloak.patch
 
@@ -39,7 +39,10 @@ Keycloak provides user federation, strong authentication, user management, fine-
 #%patch0
 
 %build
-export M2_HOME=/opt/apache-maven-3.8.4
+wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-%{maven_version}-bin.tar.gz
+tar -xvf apache-maven-%{maven_version}-bin.tar.gz -C /opt
+
+export M2_HOME=/opt/apache-maven-%{maven_version}
 export PATH=$M2_HOME/bin:$PATH
 mkdir -p ~/.m2
 cp olm/settings.xml ~/.m2
