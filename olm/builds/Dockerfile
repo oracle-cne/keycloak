@@ -1,0 +1,42 @@
+FROM container-registry.oracle.com/os/oraclelinux:9-slim AS ubi-micro-build
+
+ENV KEYCLOAK_VERSION 999.0.0-SNAPSHOT
+ARG KEYCLOAK_DIST=keycloak-21.1.2.tar.gz
+
+COPY rpms /tmp/
+
+RUN microdnf install -y tar gzip
+
+ADD $KEYCLOAK_DIST /tmp/keycloak/
+
+# The next step makes it uniform for local development and upstream built.
+# If it is a local tar archive then it is unpacked, if from remote is just downloaded.
+RUN mkdir -p /tmp/keycloak && \
+    cd /tmp/keycloak && \
+    rpm -i /tmp/*.rpm && \
+    rm /tmp/*.rpm && \
+    tar -xvf /keycloak-*.tar.gz
+
+RUN mv /tmp/keycloak/keycloak-* /opt/keycloak && mkdir -p /opt/keycloak/data
+RUN chmod -R g+rwX /opt/keycloak
+
+ADD ubi-null.sh /tmp/
+RUN bash /tmp/ubi-null.sh java-17-openjdk-headless glibc-langpack-en
+
+FROM container-registry.oracle.com/os/oraclelinux:9-slim
+ENV LANG en_US.UTF-8
+
+COPY --from=ubi-micro-build /tmp/null/rootfs/ /
+COPY --from=ubi-micro-build --chown=1000:0 /opt/keycloak /opt/keycloak
+
+RUN microdnf update && \
+    microdnf clean all && \
+    echo "keycloak:x:0:root" >> /etc/group && \
+    echo "keycloak:x:1000:0:keycloak user:/opt/keycloak:/sbin/nologin" >> /etc/passwd
+
+USER 1000
+
+EXPOSE 8080
+EXPOSE 8443
+
+ENTRYPOINT [ "/opt/keycloak/bin/kc.sh" ]

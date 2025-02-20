@@ -1,0 +1,47 @@
+<settings>
+    <mirrors>
+        <mirror>
+            <id>central-proxy</id>
+            <name>Alternate central repo</name>
+            <url>${env.MAVEN_REPO_1}</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>central-proxy-2</id>
+            <name>Alternate central repo 2</name>
+            <url>${env.MAVEN_REPO_2}</url>
+            <mirrorOf>central 2</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>central-proxy-3</id>
+            <name>Alternate central repo 3</name>
+            <url>${env.MAVEN_REPO_3}</url>
+            <mirrorOf>central 3</mirrorOf>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>myprofile</id>
+            <repositories>
+                <repository>
+                    <id>repo-1</id>
+                    <name>repo 1</name>
+                    <url>${env.MAVEN_REPO_1}</url>
+                </repository>
+                <repository>
+                    <id>repo-2</id>
+                    <name>repo 2</name>
+                    <url>${env.MAVEN_REPO_2}</url>
+                </repository>
+                <repository>
+                    <id>repo-3</id>
+                    <name>repo 3</name>
+                    <url>${env.MAVEN_REPO_3}</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>myprofile</activeProfile>
+    </activeProfiles>
+</settings>
