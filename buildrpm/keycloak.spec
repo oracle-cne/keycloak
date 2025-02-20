@@ -29,6 +29,8 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  maven-artifacts = %{maven_artifacts_version}
 BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
+BuildRequires:	nodejs >= 18.20
+
 #Patch0:        build.keycloak.patch
 
 %description
