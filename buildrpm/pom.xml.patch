@@ -1,0 +1,13 @@
+diff --git pom.xml pom.xml
+index a20fe07dcd..985afd7b16 100644
+--- pom.xml
++++ pom.xml
+@@ -226,7 +226,7 @@
+         <server.output.dir.version>${project.version}</server.output.dir.version>
+ 
+         <!-- Frontend -->
+-        <node.version>v18.15.0</node.version>
++        <node.version>v16.20.2</node.version>
+     </properties>
+ 
+     <url>http://keycloak.org</url>
