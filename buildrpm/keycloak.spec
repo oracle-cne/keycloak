@@ -29,7 +29,7 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  maven-artifacts = %{maven_artifacts_version}
 BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
-BuildRequires:	nodejs = 16.20.2
+BuildRequires:	nodejs == 16.20.2
 Patch0:         pom.xml.patch
 Patch1:         adapters/oidc/js/pom.xml.patch
 
