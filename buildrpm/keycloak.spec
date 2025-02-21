@@ -72,7 +72,9 @@ mvn --settings ../olm/maven-settings-ocne.xml -f ../pom.xml clean install -Dskip
     -Dhttp.proxyHost=${proxy_host} -Dhttp.proxyPort=${proxy_port} -Dhttps.proxyHost=${proxy_host} -Dhttps.proxyPort=${proxy_port}
 
  # build Keycloak Quarkus distribution
-mvn --settings ../olm/maven-settings-ocne.xml -f dist/pom.xml clean install
+mvn --settings ../olm/maven-settings-ocne.xml -f dist/pom.xml clean install \
+    -Dhttp.proxyHost=${proxy_host} -Dhttp.proxyPort=${proxy_port} -Dhttps.proxyHost=${proxy_host} -Dhttps.proxyPort=${proxy_port}
+
 popd
 
 %install
