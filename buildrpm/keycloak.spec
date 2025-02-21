@@ -46,7 +46,9 @@ tar -xvf apache-maven-%{maven_version}-bin.tar.gz -C /opt
 
 export M2_HOME=/opt/apache-maven-%{maven_version}
 export PATH=$M2_HOME/bin:$PATH
-mkdir -p ~/.m2
+mkdir -p ~/.m2/repository
+cp -r /maven-artifacts/maven-artifacts-1.0/buildrpm/org ~/.m2/repository
+cp -r /maven-artifacts/maven-artifacts-1.0/buildrpm/com ~/.m2/repository
 cp olm/settings.xml ~/.m2
 
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
