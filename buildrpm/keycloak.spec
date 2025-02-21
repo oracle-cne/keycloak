@@ -53,8 +53,10 @@ cp olm/settings.xml ~/.m2
 
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
-java -version
-mvn -version
+java --version
+mvn --version
+node --version
+npm version
 
 # change dir to quarkus to do the mvn build
 pushd ./quarkus
