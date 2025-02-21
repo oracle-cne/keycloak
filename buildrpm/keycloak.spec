@@ -31,7 +31,6 @@ BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
 BuildRequires:	nodejs >= 16.20
 Patch0:         pom.xml.patch
-#Patch1:         adapters/oidc/js/pom.xml.patch
 
 %description
 Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.
@@ -39,7 +38,7 @@ Keycloak provides user federation, strong authentication, user management, fine-
 %prep
 %setup -q -n %{name}-%{version}
 %patch0
-#%patch1
+
 
 %build
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-%{maven_version}-bin.tar.gz
@@ -62,7 +61,7 @@ npm version
 # change dir to quarkus to do the mvn build
 pushd ./quarkus
 
-# Parse proxy host string
+# Parse proxy host and port string
 del_prefix=${https_proxy#*//}
 proxy_host=${del_prefix%:*}
 proxy_port=${https_proxy#http*:*:}
@@ -83,7 +82,7 @@ cp quarkus/dist/target/*.gz %{buildroot}%{_datadir}/%{app_name}
 %files
 %{_datadir}/%{app_name}
 #%license LICENSE.txt THIRD_PARTY_LICENSES.txt olm/SECURITY.md
-#%license LICENSE.txt olm/SECURITY.md
+%license LICENSE.txt olm/SECURITY.md
 
 %changelog
 * Thu Feb 20 2025 Paul Mackin <paul.mackin@oracle.com> 21.1.2-1
