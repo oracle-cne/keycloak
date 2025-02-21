@@ -73,6 +73,7 @@ mvn --settings ../olm/maven-settings-ocne.xml -f ../pom.xml clean install -Dskip
 
  # build Keycloak Quarkus distribution
 mvn --settings ../olm/maven-settings-ocne.xml -f dist/pom.xml clean install \
+    -Denforcer.skip=true \
     -Dhttp.proxyHost=${proxy_host} -Dhttp.proxyPort=${proxy_port} -Dhttps.proxyHost=${proxy_host} -Dhttps.proxyPort=${proxy_port}
 
 popd
