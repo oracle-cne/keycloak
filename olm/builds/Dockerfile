@@ -1,4 +1,4 @@
-FROM container-registry.oracle.com/os/oraclelinux:9-slim AS ubi-micro-build
+FROM container-registry.oracle.com/os/oraclelinux:8-slim AS ubi-micro-build
 
 ENV KEYCLOAK_VERSION 999.0.0-SNAPSHOT
 ARG KEYCLOAK_DIST=keycloak-21.1.2.tar.gz
@@ -23,7 +23,7 @@ RUN chmod -R g+rwX /opt/keycloak
 ADD ubi-null.sh /tmp/
 RUN bash /tmp/ubi-null.sh java-17-openjdk-headless glibc-langpack-en
 
-FROM container-registry.oracle.com/os/oraclelinux:9-slim
+FROM container-registry.oracle.com/os/oraclelinux:8-slim
 ENV LANG en_US.UTF-8
 
 COPY --from=ubi-micro-build /tmp/null/rootfs/ /

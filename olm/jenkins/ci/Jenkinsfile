@@ -7,7 +7,7 @@ String imgTag  = "v" + version
 olcnePipeline(
         branchPattern: new BranchPattern(master: 'oracle/release/.*', feature: '(?!^oracle/release/.*$)(^.*$)'),
         containers: [('container-registry.oracle.com/olcne/keycloak:' + imgTag): 'olcne/keycloak:' + imgTag],
-        platforms: ['ol9'],
+        platforms: ['ol8'],
         architectures: ['x86_64', 'aarch64'],
         publishImage: false,
 )
