@@ -12,12 +12,6 @@
             <url>${env.MAVEN_REPO_2}</url>
             <mirrorOf>central 2</mirrorOf>
         </mirror>
-        <mirror>
-            <id>central-proxy-3</id>
-            <name>Alternate central repo 3</name>
-            <url>${env.MAVEN_REPO_3}</url>
-            <mirrorOf>central 3</mirrorOf>
-        </mirror>
     </mirrors>
     <profiles>
         <profile>
@@ -32,11 +26,6 @@
                     <id>repo-2</id>
                     <name>repo 2</name>
                     <url>${env.MAVEN_REPO_2}</url>
-                </repository>
-                <repository>
-                    <id>repo-3</id>
-                    <name>repo 3</name>
-                    <url>${env.MAVEN_REPO_3}</url>
                 </repository>
             </repositories>
         </profile>
