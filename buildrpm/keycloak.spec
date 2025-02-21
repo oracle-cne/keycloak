@@ -30,15 +30,14 @@ BuildRequires:  maven-artifacts = %{maven_artifacts_version}
 BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
 BuildRequires:	nodejs >= 18.20
-
-#Patch0:        build.keycloak.patch
+Patch0:        pom.xml.patch
 
 %description
 Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.
 
 %prep
 %setup -q -n %{name}-%{version}
-#%patch0
+%patch0
 
 %build
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-%{maven_version}-bin.tar.gz
