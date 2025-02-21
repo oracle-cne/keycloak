@@ -54,15 +54,6 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>npm-ci</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>ci --ignore-scripts</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>npm-build</id>
                         <goals>
                             <goal>npm</goal>
