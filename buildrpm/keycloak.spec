@@ -62,8 +62,15 @@ npm version
 # change dir to quarkus to do the mvn build
 pushd ./quarkus
 
+# Parse proxy host string
+del_prefix=${https_proxy#*//}
+proxy_host=${del_prefix%:*}
+proxy_port=${https_proxy#http*:*:}
+
  # build the project for the first time to put required modules of Keycloak into local maven cache in package org.keycloak
-mvn --settings ../olm/maven-settings-ocne.xml -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests  -Denforcer.skip=true
+mvn --settings ../olm/maven-settings-ocne.xml -f ../pom.xml clean install -DskipTestsuite \
+    -DskipExamples -DskipTests  -Denforcer.skip=true \
+    -Dhttp.proxyHost=${proxy_host} -Dhttp.proxyPort=${proxy_port} -Dhttps.proxyHost=${proxy_host} -Dhttps.proxyPort=${proxy_port}
 
  # build Keycloak Quarkus distribution
 mvn --settings ../olm/maven-settings-ocne.xml -f dist/pom.xml clean install
