@@ -31,7 +31,7 @@ BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
 BuildRequires:	nodejs >= 16.20
 Patch0:         pom.xml.patch
-Patch1:         adapters/oidc/js/pom.xml.patch
+#Patch1:         adapters/oidc/js/pom.xml.patch
 
 %description
 Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.
@@ -39,7 +39,7 @@ Keycloak provides user federation, strong authentication, user management, fine-
 %prep
 %setup -q -n %{name}-%{version}
 %patch0
-%patch1
+#%patch1
 
 %build
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-%{maven_version}-bin.tar.gz
