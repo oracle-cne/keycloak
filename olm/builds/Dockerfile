@@ -1,21 +1,17 @@
 FROM container-registry.oracle.com/os/oraclelinux:8-slim AS ubi-micro-build
 
-ENV KEYCLOAK_VERSION 999.0.0-SNAPSHOT
-ARG KEYCLOAK_DIST=keycloak-21.1.2.tar.gz
+ENV KEYCLOAK_VERSION 21.1.2
 
 COPY rpms /tmp/
 
 RUN microdnf install -y tar gzip
 
-ADD $KEYCLOAK_DIST /tmp/keycloak/
-
 # The next step makes it uniform for local development and upstream built.
 # If it is a local tar archive then it is unpacked, if from remote is just downloaded.
-RUN mkdir -p /tmp/keycloak && \
+RUN rpm -i /tmp/*.rpm && \
+    mkdir -p /tmp/keycloak && \
     cd /tmp/keycloak && \
-    rpm -i /tmp/*.rpm && \
-    rm /tmp/*.rpm && \
-    tar -xvf /keycloak-*.tar.gz
+    tar -xvf /usr/share/keycloak/keycloak-*.tar.gz
 
 RUN mv /tmp/keycloak/keycloak-* /opt/keycloak && mkdir -p /opt/keycloak/data
 RUN chmod -R g+rwX /opt/keycloak
