@@ -44,7 +44,7 @@ microdnf install -y findutils diffutils
 # Install core packages to chroot
 rootfs="$(realpath rootfs)"
 mkdir -p "$rootfs"
-<keep xargs microdnf install -y --installroot "$rootfs" --releasever 8 --setopt install_weak_deps=false --nodocs
+<keep xargs microdnf install -y --installroot "$rootfs" --releasever 8 --setopt install_weak_deps=1 --nodocs
 microdnf --installroot "$rootfs" clean all
 rm -rf "$rootfs"/var/cache/* "$rootfs"/var/log/dnf* "$rootfs"/var/log/yum.*
 { set +x; } 2>/dev/null
