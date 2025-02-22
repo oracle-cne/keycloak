@@ -16,7 +16,7 @@ RUN rpm -i /tmp/*.rpm && \
 RUN mv /tmp/keycloak/keycloak-* /opt/keycloak && mkdir -p /opt/keycloak/data
 RUN chmod -R g+rwX /opt/keycloak
 
-ADD ubi-null.sh /tmp/
+ADD olm/builds/ubi-null.sh /tmp/
 RUN bash /tmp/ubi-null.sh java-17-openjdk-headless glibc-langpack-en
 
 FROM container-registry.oracle.com/os/oraclelinux:8-slim
