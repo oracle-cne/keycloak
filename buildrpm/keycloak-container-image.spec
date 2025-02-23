@@ -27,7 +27,7 @@ Keycloak provides user federation, strong authentication, user management, fine-
 
 %build
 %global rpm_name %{app_name}-%{version}-%{release}.%{_build_arch}
-%global docker_tag %{registry}/%{app_name}:%{version}
+%global docker_tag %{registry}/%{app_name}:v%{version}
 
 yum clean all
 yumdownloader --destdir=${PWD}/rpms %{rpm_name}
