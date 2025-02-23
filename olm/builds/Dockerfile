@@ -16,13 +16,9 @@ RUN rpm -i /tmp/*.rpm && \
 RUN mv /tmp/keycloak/keycloak-* /opt/keycloak && mkdir -p /opt/keycloak/data
 RUN chmod -R g+rwX /opt/keycloak
 
-#ADD olm/builds/ubi-null.sh /tmp/
-#RUN bash /tmp/ubi-null.sh java-17-openjdk-headless glibc-langpack-en
-
 FROM container-registry.oracle.com/os/oraclelinux:8-slim
 ENV LANG en_US.UTF-8
 
-#COPY --from=ubi-micro-build /tmp/null/rootfs/ /
 COPY --from=ubi-micro-build --chown=1000:0 /opt/keycloak /opt/keycloak
 
 RUN microdnf update -y && \
