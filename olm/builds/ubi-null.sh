@@ -44,7 +44,9 @@ microdnf install -y findutils diffutils
 # Install core packages to chroot
 rootfs="$(realpath rootfs)"
 mkdir -p "$rootfs"
-<keep xargs microdnf install -y --installroot "$rootfs" --releasever 8 --setopt install_weak_deps=1 --nodocs
+<keep xargs microdnf install -y --installroot "$rootfs" --releasever 8 --setopt install_weak_deps=0 \
+      --noplugins --nodocs --setopt cachedir=/install-cache/ --setopt reposdir=${rootfs}/etc/yum.repos.d \
+      --setopt varsdir=/install-var/ --config /etc/yum.repos.d/oracle-linux-ol8.repo
 microdnf --installroot "$rootfs" clean all
 rm -rf "$rootfs"/var/cache/* "$rootfs"/var/log/dnf* "$rootfs"/var/log/yum.*
 { set +x; } 2>/dev/null
