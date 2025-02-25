@@ -32,7 +32,6 @@
                         <id>npm-install</id>
                         <phase>initialize</phase>
                         <configuration>
-                            <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
                             <arguments>
                                 <argument>install</argument>
@@ -46,7 +45,6 @@
                         <id>npm-ci</id>
                         <phase>initialize</phase>
                         <configuration>
-                            <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
                             <arguments>
                                 <argument>ci</argument>
