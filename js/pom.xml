@@ -31,7 +31,7 @@
                     <execution>
                         <id>npm-ci</id>
                         <goals>
-                            <goal>npm</goal>
+                            <goal>exec</goal>
                         </goals>
                         <configuration>
                             <executable>npm</executable>

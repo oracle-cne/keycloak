@@ -36,7 +36,7 @@
                     <execution>
                         <id>npm-build</id>
                         <goals>
-                            <goal>npm</goal>
+                            <goal>exec</goal>
                         </goals>
                         <configuration>
                             <executable>npm</executable>
