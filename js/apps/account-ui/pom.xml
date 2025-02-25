@@ -34,6 +34,21 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>npm-ci</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>ci</argument>
+                                <argument>apps/account-ui</argument>
+                                <argument>--ignore-scripts</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>npm-build</id>
                         <phase>generate-resources</phase>
                         <configuration>
