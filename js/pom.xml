@@ -30,29 +30,30 @@
                 <executions>
                     <execution>
                         <id>npm-install</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
+                       <configuration>
+                            <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
-                            <workingDirectory>.</workingDirectory>
                             <arguments>
                                 <argument>install</argument>
                             </arguments>
                         </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm-ci</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <id>npm-ci</id>
                         <configuration>
+                            <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
                             <arguments>
                                 <argument>ci</argument>
                                 <argument>--ignore-scripts</argument>
                             </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
