@@ -30,6 +30,7 @@
                 <executions>
                     <execution>
                         <id>npm-install</id>
+                        <phase>install</phase>
                         <configuration>
                             <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
@@ -43,6 +44,7 @@
                     </execution>
                     <execution>
                         <id>npm-ci</id>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
