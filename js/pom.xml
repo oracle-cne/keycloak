@@ -35,6 +35,7 @@
                         </goals>
                         <configuration>
                             <executable>npm</executable>
+                            <workingDirectory>.</workingDirectory>
                             <arguments>
                                 <argument>install</argument>
                             </arguments>
