@@ -120,8 +120,7 @@
                         <artifactId>exec-maven-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>npm-install</id>
-                                <phase>initialize</phase>
+                                <id>setup-node</id>
                                 <configuration>
                                     <workingDirectory>src/main/resources/theme/keycloak/common/resources</workingDirectory>
                                     <executable>npm</executable>
@@ -132,6 +131,7 @@
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>
+                                <phase>initialize</phase>
                             </execution>
                             <execution>
                                 <id>compile-account2</id>

@@ -50,7 +50,7 @@
                 <executions>
                     <execution>
                         <id>npm-install</id>
-                        <phase>initialize</phase>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <workingDirectory>${js.projectDir}</workingDirectory>
                             <executable>npm</executable>
@@ -64,7 +64,7 @@
                     </execution>
                     <execution>
                         <id>npm-ci</id>
-                        <phase>initialize</phase>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <workingDirectory>${js.projectDir}</workingDirectory>
                             <executable>npm</executable>
@@ -79,6 +79,7 @@
                     </execution>
                     <execution>
                         <id>npm-build</id>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <workingDirectory>${js.projectDir}</workingDirectory>
                             <executable>npm</executable>
