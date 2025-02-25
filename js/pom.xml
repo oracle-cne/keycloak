@@ -30,6 +30,9 @@
                 <executions>
                     <execution>
                         <id>npm-ci</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
                         <configuration>
                             <executable>npm</executable>
                             <arguments>

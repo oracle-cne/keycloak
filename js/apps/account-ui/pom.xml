@@ -35,6 +35,9 @@
                 <executions>
                     <execution>
                         <id>npm-build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
                         <configuration>
                             <executable>npm</executable>
                             <workingDirectory>../..</workingDirectory>
