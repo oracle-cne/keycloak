@@ -34,10 +34,11 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>npm-ci</id>
+                        <id>npm-ci-account-ui</id>
                         <phase>generate-resources</phase>
                         <configuration>
                             <executable>npm</executable>
+                            <workingDirectory>../..</workingDirectory>
                             <arguments>
                                 <argument>ci</argument>
                                 <argument>apps/account-ui</argument>
