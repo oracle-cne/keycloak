@@ -35,9 +35,6 @@
                 <executions>
                     <execution>
                         <id>npm-build</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
                         <configuration>
                             <executable>npm</executable>
                             <workingDirectory>../..</workingDirectory>
@@ -47,6 +44,9 @@
                                 <argument>--workspace=account-ui</argument>
                             </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

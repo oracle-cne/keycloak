@@ -58,6 +58,9 @@
                                 <argument>--ignore-scripts</argument>
                             </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>npm-build</id>
@@ -70,6 +73,9 @@
                                 <argument>--workspace=keycloak-js</argument>
                             </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

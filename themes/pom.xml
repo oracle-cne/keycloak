@@ -131,6 +131,9 @@
                                         <argument>--scripts-prepend-node-path</argument>
                                     </arguments>
                                 </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
                             </execution>
                             <execution>
                                 <id>npm-install-account2</id>
@@ -144,6 +147,9 @@
                                         <argument>--ignore-scripts</argument>
                                     </arguments>
                                 </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
                             </execution>
                         </executions>
                     </plugin>
