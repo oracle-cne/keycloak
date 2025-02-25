@@ -29,6 +29,7 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  maven-artifacts = %{maven_artifacts_version}
 BuildRequires:  wget
 BuildRequires:  java-17-openjdk-devel
+BuildRequires:  nodejs >= 16:20
 #Patch0:         pom.xml.patch
 
 %description
@@ -54,6 +55,8 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 java --version
 mvn --version
+node --version
+npm version
 
 # change dir to quarkus to do the mvn build
 pushd ./quarkus
