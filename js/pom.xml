@@ -30,7 +30,7 @@
                 <executions>
                     <execution>
                         <id>npm-install</id>
-                       <configuration>
+                        <configuration>
                             <workingDirectory>${project.basedir}/js</workingDirectory>
                             <executable>npm</executable>
                             <arguments>
