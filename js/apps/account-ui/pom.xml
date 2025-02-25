@@ -35,6 +35,7 @@
                 <executions>
                     <execution>
                         <id>npm-build</id>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <executable>npm</executable>
                             <workingDirectory>../..</workingDirectory>

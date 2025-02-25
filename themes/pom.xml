@@ -121,7 +121,7 @@
                         <executions>
                             <execution>
                                 <id>npm-install</id>
-                                <phase>install</phase>
+                                <phase>initialize</phase>
                                 <configuration>
                                     <workingDirectory>src/main/resources/theme/keycloak/common/resources</workingDirectory>
                                     <executable>npm</executable>
