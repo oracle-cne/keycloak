@@ -9,6 +9,7 @@ olcnePipeline(
         containers: [('container-registry.oracle.com/olcne/keycloak:' + imgTag): 'olcne/keycloak:' + imgTag],
         platforms: ['ol8'],
         architectures: ['x86_64', 'aarch64'],
+        ol8ModulesToEnable: ['nodejs:18'],
         publishImage: false,
 )
 
