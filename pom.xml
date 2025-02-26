@@ -1972,11 +1972,6 @@
                     <version>${osgi.bundle.plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>com.github.eirslett</groupId>
-                    <artifactId>frontend-maven-plugin</artifactId>
-                    <version>${frontend.plugin.version}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.keycloak</groupId>
                     <artifactId>keycloak-distribution-licenses-maven-plugin</artifactId>
                     <version>${project.version}</version>
