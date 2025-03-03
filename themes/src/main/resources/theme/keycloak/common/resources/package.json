@@ -20,6 +20,16 @@
     },
     "xmlbuilder": {
       "lodash": "4.17.21"
-    }  
+    },
+    "moment": "2.29.4",
+    "eonasdan-bootstrap-datetimepicker": {
+      "moment": "2.29.4"
+    },
+    "moment-timezone": {
+      "moment": "2.29.4"
+    },
+    "patternfly": {
+      "moment": "2.29.4"
+    }
   }
 }
