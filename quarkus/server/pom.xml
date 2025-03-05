@@ -22,7 +22,6 @@
                 <version>4.1.119.Final</version>
                 <scope>import</scope>
 		<type>pom</type>
-	        </dependency>
             </dependency>
 	    <dependency>
                 <groupId>org.yaml</groupId>
