@@ -47,7 +47,7 @@
             </dependency>
             <dependency>
                 <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-http</artifactId>
+                <artifactId>quarkus-http-http-core</artifactId>
                 <version>5.3.4</version>
                 <scope>import</scope>
                 <type>pom</type>
