@@ -38,25 +38,6 @@
                 <artifactId>jakarta.annotation-api</artifactId>
                 <version>1.3.5</version>
             </dependency>
-            <dependency>
-                <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-core</artifactId>
-                <version>5.3.4</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-http-core</artifactId>
-                <version>5.3.4</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-servlet</artifactId>
-                <version>5.3.4</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
