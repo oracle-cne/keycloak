@@ -23,18 +23,6 @@
                 <scope>import</scope>
 	        <type>pom</type>
             </dependency>
-            <dependency>
-                <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-core</artifactId>
-                <version>5.3.4</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>io.quarkus.http</groupId>
-                <artifactId>quarkus-http-servlet</artifactId>
-                <version>5.3.4</version>
-            </dependency>
 	    <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
