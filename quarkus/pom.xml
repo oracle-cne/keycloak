@@ -64,7 +64,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            
+            <dependency>
+                <groupId>org.wildfly.security</groupId>
+                <artifactId>wildfly-elytron</artifactId>
+                <version>2.6.1.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
             <!-- Override the dependencies below to use the versions used by Keycloak -->
             <dependency>
                 <groupId>io.quarkus.http</groupId>
