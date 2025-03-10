@@ -67,6 +67,13 @@
 
             <!-- Override the dependencies below to use the versions used by Keycloak -->
             <dependency>
+                <groupId>org.wildfly.security</groupId>
+                <artifactId>wildfly-elytron</artifactId>
+                <version>2.5.2.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>     
+	    <dependency>
                 <groupId>io.quarkus.http</groupId>
                 <artifactId>quarkus-http-core</artifactId>
                 <version>5.3.4</version>
