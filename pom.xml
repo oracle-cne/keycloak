@@ -41,7 +41,7 @@
         <jboss.snapshots.repo.id>jboss-snapshots-repository</jboss.snapshots.repo.id>
         <jboss.snapshots.repo.url>https://s01.oss.sonatype.org/content/repositories/snapshots/</jboss.snapshots.repo.url>
 
-        <quarkus.version>2.13.8.Final</quarkus.version>
+        <quarkus.version>2.16.12.Final</quarkus.version>
 
         <project.build-time>${timestamp}</project.build-time>
 
@@ -293,17 +293,8 @@
     </modules>
 
     <dependencyManagement>
+
         <dependencies>
-            <dependency>
-                <groupId>io.netty</groupId>
-		<artifactId>netty-codec-http</artifactId>
-                <version>4.1.108.Final</version>
-	    </dependency>
-	    <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-codec-http2</artifactId>
-                <version>4.1.108.Final</version>
-            </dependency>
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
