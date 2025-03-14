@@ -251,7 +251,7 @@ public class RedirectUtils {
     // removes the queryString, fragment and userInfo from the redirect
      // to avoid comparing this when wildcards are used
      private static String stripOffRedirectForWildcard(String redirect) {
-         return KeycloakUriBuilder.fromUri(redirect, false)
+         return KeycloakUriBuilder.fromUri(redirect)
                  .preserveDefaultPort()
                  .userInfo(null)
                  .replaceQuery(null)
