@@ -101,6 +101,16 @@
                 <version>4.1.119.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
+	    </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-common</artifactId>
+                <version>4.1.119.Final</version>
+	    </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>4.1.119.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.yaml</groupId>
