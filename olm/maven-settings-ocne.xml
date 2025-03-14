@@ -48,7 +48,20 @@
                         <updatePolicy>never</updatePolicy>
                     </snapshots>
                 </repository>
-
+                <repository>
+                    <id>jboss-public-repository-group-3</id>
+                    <name>JBoss Public Maven Repository Group 3</name>
+                    <url>${env.MAVEN_REPO_3}</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
@@ -69,6 +82,20 @@
                     <id>jboss-public-repository-group-2</id>
                     <name>JBoss Public Maven Repository Group 2</name>
                     <url>${env.MAVEN_REPO_2}</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+	        </pluginRepository>
+                <pluginRepository>
+                    <id>jboss-public-repository-group-3</id>
+                    <name>JBoss Public Maven Repository Group 3</name>
+                    <url>${env.MAVEN_REPO_3}</url>
                     <layout>default</layout>
                     <releases>
                         <enabled>true</enabled>
