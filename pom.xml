@@ -122,7 +122,7 @@
         <!-- Override of SnakeYAML to fix multiple CVEs -->
         <org.yaml.snakeyaml.version>1.33</org.yaml.snakeyaml.version>
         <!-- Override sshd-common to fix CVE-2022-45047 -->
-        <org.apache.sshd.version>2.9.2</org.apache.sshd.version>
+        <org.apache.sshd.version>2.12.0</org.apache.sshd.version>
         <org.snakeyaml.snakeyaml-engine.version>2.6</org.snakeyaml.snakeyaml-engine.version>
 
         <!-- Openshift -->
@@ -131,7 +131,12 @@
         <!-- Others -->
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.11</commons-lang3.version>
-        <commons-io.version>2.18.0</commons-io.version>
+	<commons-io.version>2.18.0</commons-io.version>
+	<commons-compress.version>1.26.0</commons-compress.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-text.version>1.10.0</commons-text.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+	
         <apacheds.version>2.0.0.AM26</apacheds.version>
         <apacheds.codec.version>2.0.0</apacheds.codec.version>
         <google.zxing.version>3.4.0</google.zxing.version>
@@ -1750,6 +1755,26 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
+	    </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+	    </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+	    </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.javaparser</groupId>
