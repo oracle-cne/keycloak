@@ -94,6 +94,20 @@ public class RedirectUtils {
         KeycloakUriInfo uriInfo = session.getContext().getUri();
         RealmModel realm = session.getContext().getRealm();
 
+        redirectUri = decodeRedirectUri(redirectUri);
+        if (redirectUri != null) {
+            try {
+                URI uri = URI.create(redirectUri);
+                redirectUri = uri.normalize().toString();
+            } catch (IllegalArgumentException cause) {
+                logger.debug("Invalid redirect uri", cause);
+                return null;
+            } catch (Exception cause) {
+                logger.debug("Unexpected error when parsing redirect uri", cause);
+                return null;
+            }
+        }
+
         if (redirectUri == null) {
             if (!requireRedirectUri) {
                 redirectUri = getSingleValidRedirectUri(validRedirects);
@@ -196,7 +210,7 @@ public class RedirectUtils {
         int MAX_DECODING_COUNT = 5; // Max count of attempts for decoding URL (in case it was encoded multiple times)
 
         try {
-            KeycloakUriBuilder uriBuilder = KeycloakUriBuilder.fromUri(redirectUri).preserveDefaultPort();
+            KeycloakUriBuilder uriBuilder = KeycloakUriBuilder.fromUri(redirectUri);
             String origQuery = uriBuilder.getQuery();
             String origFragment = uriBuilder.getFragment();
             String encodedRedirectUri = uriBuilder
@@ -209,7 +223,7 @@ public class RedirectUtils {
                 decodedRedirectUri = Encode.decode(encodedRedirectUri);
                 if (decodedRedirectUri.equals(encodedRedirectUri)) {
                     // URL is decoded. We can return it (after attach original query and fragment)
-                    return KeycloakUriBuilder.fromUri(decodedRedirectUri).preserveDefaultPort()
+                    return KeycloakUriBuilder.fromUri(decodedRedirectUri)
                             .replaceQuery(origQuery)
                             .fragment(origFragment)
                             .buildAsString();
