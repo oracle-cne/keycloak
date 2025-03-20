@@ -5,7 +5,7 @@
     <parent>
         <artifactId>keycloak-js-parent</artifactId>
         <groupId>org.keycloak</groupId>
-        <version>999.0.0-SNAPSHOT</version>
+        <version>21.1.2</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -43,32 +43,58 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>npm-prepublish</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
+                        <id>npm-ci-keycloak-js</id>
+                        <phase>generate-resources</phase>
                         <configuration>
-                            <arguments>run prepublishOnly --workspace=keycloak-js</arguments>
+                            <executable>npm</executable>
+                            <workingDirectory>../..</workingDirectory>
+                            <arguments>
+                                <argument>ci</argument>
+                                <argument>libs/keycloak-js</argument>
+                                <argument>--ignore-scripts</argument>
+                            </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>npm-prepublish</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <workingDirectory>../..</workingDirectory>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>prepublishOnly</argument>
+                                <argument>--workspace=keycloak-js</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>npm-pack</id>
                         <phase>package</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
                         <configuration>
-                            <arguments>pack --workspace=keycloak-js --pack-destination=libs/keycloak-js/target</arguments>
+                            <executable>npm</executable>
+                            <workingDirectory>../..</workingDirectory>
+                            <arguments>
+                                <argument>pack</argument>
+                                <argument>--workspace=keycloak-js</argument>
+                                <argument>--pack-destination=libs/keycloak-js/target</argument>
+                            </arguments>
                         </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <workingDirectory>../..</workingDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>

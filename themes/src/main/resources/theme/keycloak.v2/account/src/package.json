@@ -53,5 +53,19 @@
     "snowpack": "^1.7.1",
     "typescript": "^4.7.4"
   },
+  "overrides": {
+    "lodash": "4.17.21",
+    "@netflix/nerror": {
+      "lodash": "4.17.21"
+    },
+    "cordova-android": {
+      "xmlbuilder": {
+        "lodash": "4.17.21"
+      }   
+    },
+    "xmlbuilder": {
+      "lodash": "4.17.21"
+    }  
+  },  
   "repository": {}
 }

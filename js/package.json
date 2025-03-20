@@ -31,6 +31,20 @@
     "typescript": "^5.0.4",
     "wireit": "^0.9.5"
   },
+  "overrides": {
+    "lodash": "4.17.21",
+    "@netflix/nerror": {
+      "lodash": "4.17.21"
+    },
+    "cordova-android": {
+      "xmlbuilder": {
+        "lodash": "4.17.21"
+      }
+    },
+    "xmlbuilder": {
+      "lodash": "4.17.21"
+    }
+  },
   "lint-staged": {
     "*.{js,jsx,mjs,ts,tsx}": "eslint --cache --fix"
   }

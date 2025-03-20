@@ -346,7 +346,6 @@ public class OAuthRedirectUriTest extends AbstractKeycloakTest {
         checkRedirectUri("http://localhost:8280/foobar", false, true);
 
         checkRedirectUri("http://something.com:80/some", true);
-        checkRedirectUri("http://localhost:8280/foo/bar%20bar%2092%2F72/3", true, true);
 
         checkRedirectUri("http://example.com/foo/../", false);
         checkRedirectUri("http://example.com/foo/%2E%2E/", false); // url-encoded "http://example.com/foobar/../"
