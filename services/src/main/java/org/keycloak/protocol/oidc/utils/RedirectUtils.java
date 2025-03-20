@@ -94,6 +94,20 @@ public class RedirectUtils {
         KeycloakUriInfo uriInfo = session.getContext().getUri();
         RealmModel realm = session.getContext().getRealm();
 
+        redirectUri = decodeRedirectUri(redirectUri);
+        if (redirectUri != null) {
+            try {
+                URI uri = URI.create(redirectUri);
+                redirectUri = uri.normalize().toString();
+            } catch (IllegalArgumentException cause) {
+                logger.debug("Invalid redirect uri", cause);
+                return null;
+            } catch (Exception cause) {
+                logger.debug("Unexpected error when parsing redirect uri", cause);
+                return null;
+            }
+        }
+
         if (redirectUri == null) {
             if (!requireRedirectUri) {
                 redirectUri = getSingleValidRedirectUri(validRedirects);
@@ -196,7 +210,7 @@ public class RedirectUtils {
         int MAX_DECODING_COUNT = 5; // Max count of attempts for decoding URL (in case it was encoded multiple times)
 
         try {
-            KeycloakUriBuilder uriBuilder = KeycloakUriBuilder.fromUri(redirectUri).preserveDefaultPort();
+            KeycloakUriBuilder uriBuilder = KeycloakUriBuilder.fromUri(redirectUri);
             String origQuery = uriBuilder.getQuery();
             String origFragment = uriBuilder.getFragment();
             String encodedRedirectUri = uriBuilder
@@ -209,7 +223,7 @@ public class RedirectUtils {
                 decodedRedirectUri = Encode.decode(encodedRedirectUri);
                 if (decodedRedirectUri.equals(encodedRedirectUri)) {
                     // URL is decoded. We can return it (after attach original query and fragment)
-                    return KeycloakUriBuilder.fromUri(decodedRedirectUri).preserveDefaultPort()
+                    return KeycloakUriBuilder.fromUri(decodedRedirectUri)
                             .replaceQuery(origQuery)
                             .fragment(origFragment)
                             .buildAsString();
@@ -248,13 +262,25 @@ public class RedirectUtils {
         return sb.toString();
     }
 
+    // removes the queryString, fragment and userInfo from the redirect
+     // to avoid comparing this when wildcards are used
+     private static String stripOffRedirectForWildcard(String redirect) {
+         return KeycloakUriBuilder.fromUri(redirect)
+                 .preserveDefaultPort()
+                 .userInfo(null)
+                 .replaceQuery(null)
+                 .fragment(null)
+                 .buildAsString();
+     }
+
     // return the String that matched the redirect or null if not matched
     private static String matchesRedirects(Set<String> validRedirects, String redirect, boolean allowWildcards) {
         logger.tracef("matchesRedirects: redirect URL to check: %s, allow wildcards: %b, Configured valid redirect URLs: %s", redirect, allowWildcards, validRedirects);
         for (String validRedirect : validRedirects) {
             if (validRedirect.endsWith("*") && !validRedirect.contains("?") && allowWildcards) {
-                // strip off the query component - we don't check them when wildcards are effective
-                String r = redirect.contains("?") ? redirect.substring(0, redirect.indexOf("?")) : redirect;
+                // strip off the userInfo, query or fragment components - we don't check them when wildcards are effective
+                String r = stripOffRedirectForWildcard(redirect);
+
                 // strip off *
                 int length = validRedirect.length() - 1;
                 validRedirect = validRedirect.substring(0, length);

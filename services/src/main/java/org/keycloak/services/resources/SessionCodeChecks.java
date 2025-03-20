@@ -17,8 +17,9 @@
 
 package org.keycloak.services.resources;
 
-import static org.keycloak.services.managers.AuthenticationManager.authenticateIdentityCookie;
 import static org.keycloak.services.managers.AuthenticationSessionManager.AUTH_SESSION_ID;
+import static org.keycloak.services.managers.AuthenticationManager.KEYCLOAK_IDENTITY_COOKIE;
+import static org.keycloak.services.managers.AuthenticationManager.authenticateIdentityCookie;
 import static org.keycloak.utils.LockObjectsForModification.lockUserSessionsForModification;
 
 import java.net.URI;
@@ -184,10 +185,8 @@ public class SessionCodeChecks {
         // See if we are already authenticated and userSession with same ID exists.
         UserSessionModel userSession = authSessionManager.getUserSessionFromAuthCookie(realm);
 
-        boolean authenticating = !CookieHelper.getCookieValue(session, AUTH_SESSION_ID).isEmpty();
-
-        if (authenticating) {
-            // if there is an auth session, make sure the user is not yet authenticated
+        if (userSession == null) {
+            // fallback to check if there is an identity cookie
             AuthenticationManager.AuthResult authResult = lockUserSessionsForModification(session, () -> authenticateIdentityCookie(session, realm, false));
 
             if (authResult != null) {

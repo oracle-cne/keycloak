@@ -20,7 +20,7 @@
     <parent>
         <artifactId>keycloak-parent</artifactId>
         <groupId>org.keycloak</groupId>
-        <version>999.0.0-SNAPSHOT</version>
+        <version>21.1.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <name>Keycloak Quarkus Parent</name>
@@ -44,7 +44,7 @@
             The dependencies and their versions are the same used by Wildfly distribution.
          -->
         <org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec.version>2.0.1.Final</org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec.version>
-        <sun.saaj-impl.version>1.4.1.SP1</sun.saaj-impl.version>
+        <sun.saaj-impl.version>1.4.0</sun.saaj-impl.version>
         <org.jvnet.staxex.version>1.8.3</org.jvnet.staxex.version>
         <io.agroal.version>1.17</io.agroal.version>
 
@@ -67,6 +67,67 @@
             
             <!-- Override the dependencies below to use the versions used by Keycloak -->
             <dependency>
+                <groupId>io.quarkus.http</groupId>
+                <artifactId>quarkus-http-core</artifactId>
+                <version>5.3.4</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus.http</groupId>
+                <artifactId>quarkus-http-http-core</artifactId>
+                <version>5.3.4</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus.http</groupId>
+                <artifactId>quarkus-http-core</artifactId>
+                <version>5.3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus.http</groupId>
+                <artifactId>quarkus-http-http-core</artifactId>
+                <version>5.3.4</version>
+            </dependency>
+	    <dependency>
+                <groupId>io.quarkus.http</groupId>
+                <artifactId>quarkus-http-servlet</artifactId>
+                <version>5.3.4</version>
+	    </dependency>
+            <dependency>
+	        <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>4.1.119.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+	    </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-common</artifactId>
+                <version>4.1.119.Final</version>
+	    </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>4.1.119.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.5</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.annotation</groupId>
+                <artifactId>jakarta.annotation-api</artifactId>
+                <version>1.3.5</version>
+            </dependency>
+	    <dependency>
                 <groupId>org.infinispan</groupId>
                 <artifactId>infinispan-core</artifactId>
                 <version>${infinispan.version}</version>
@@ -172,7 +233,7 @@
         <repository>
             <id>central</id>
             <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2</url>
+            <url>${env.MAVEN_REPO_1}</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -180,7 +241,7 @@
         <repository>
             <id>jboss-public-repository</id>
             <name>Jboss Public</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <url>${env.MAVEN_REPO_1}</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
