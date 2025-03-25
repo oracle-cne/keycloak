@@ -84,7 +84,7 @@
         <infinispan.version>14.0.9.Final</infinispan.version>
         <infinispan.protostream.processor.version>4.6.2.Final</infinispan.protostream.processor.version>
         <jackson.version>2.18.2</jackson.version>
-        <jackson.databind.version>2.13.4.2</jackson.databind.version>
+        <jackson.databind.version>2.18.2</jackson.databind.version>
         <jackson.annotations.version>${jackson.version}</jackson.annotations.version>
         <jakarta.mail.version>1.6.5</jakarta.mail.version>
         <jboss-jaxrs-api_2.1_spec>2.0.1.Final</jboss-jaxrs-api_2.1_spec>
@@ -305,7 +305,16 @@
 
     <dependencyManagement>
 
-	<dependencies>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.18.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
@@ -1879,6 +1888,30 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+	    <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <pluginManagement>
